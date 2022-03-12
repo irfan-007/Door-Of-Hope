@@ -28,14 +28,23 @@ function NavBar() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <Nav.Link onClick={() => navigate("/home")}>HOME</Nav.Link>
+                <Nav.Link onClick={() => navigate("/institutions")}>
+                  INSTITUTIONS
+                </Nav.Link>
                 <Nav.Link onClick={() => navigate("/login")}>LOGIN</Nav.Link>
+                <Nav.Link onClick={() => navigate("/contact")}>
+                  CONTACT
+                </Nav.Link>
+                <Nav.Link onClick={() => navigate("/about")}>ABOUT-US</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <span
               style={{
+                color: "white",
+                fontFamily: "sans-serif",
                 width: "auto",
                 textAlign: "center",
-                backgroundColor: "lightskyblue",
+                backgroundColor: "transparent",
                 padding: 8,
                 fontSize: "1.5rem",
                 borderRadius: "20px",

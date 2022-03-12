@@ -1,0 +1,24 @@
+p {
+  text-align: left;
+  font-family: cursive;
+  font-size: 24px;
+}
+
+.imag {
+  float: right;
+  width: 30rem;
+  max-height: 30rem;
+  margin-left: 15px;
+}
+
+h3 {
+  padding-top: 2rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+@media only screen and (max-width: 400px) {
+  .imag {
+    width: 18rem;
+    height: 20rem;
+  }
+}

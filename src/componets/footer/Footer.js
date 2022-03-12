@@ -1,27 +1,43 @@
-import { Button } from "react-bootstrap";
-import React from "react";
+import { Button, Col, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import "./Footer.css";
 
 function Footer() {
+  const [coloring, setcoloring] = useState(true);
+
+  useEffect(() => {
+    window.setTimeout(() => {
+      console.log(coloring);
+      setcoloring(!coloring);
+    }, 3000);
+  });
+
   return (
-    <div className="ftr container">
-      <div className="row">
-        <div className="col">
+    <div
+      style={
+        coloring
+          ? { backgroundColor: "rgba(12, 94, 80, 0.75)" }
+          : { backgroundColor: "yellowgreen" }
+      }
+      className="ftr container"
+    >
+      <Row>
+        <Col>
           <Button variant="secondary">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </Button>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <Button variant="secondary">
-            <i class="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-facebook"></i>
           </Button>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <Button variant="secondary">
-            <i class="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
           </Button>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 }

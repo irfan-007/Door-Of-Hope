@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer/Footer";
 
 import "./Loginfor.css";
 
@@ -11,7 +10,7 @@ function Loginfor() {
       <form className="login" action="./" method="POST">
         <div className="content">
           <div className="header">
-            <h2>Admin Login</h2>
+            <h2 style={{ fontFamily: "Audiowide" }}>Institution Login</h2>
           </div>
           <p>
             <a onClick={() => navigate("/adminlogin")}>
@@ -22,7 +21,7 @@ function Loginfor() {
             </a>
           </p>
           <div className="header">
-            <h2>Volunteer Login</h2>
+            <h2 style={{ fontFamily: "Audiowide" }}>Volunteer Login</h2>
           </div>
           <p>
             <a onClick={() => navigate("/volunteerlogin")}>

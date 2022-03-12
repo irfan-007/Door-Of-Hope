@@ -12,7 +12,7 @@ function Entry() {
             <h2>Oldage</h2>
           </div>
           <p>
-            <a onClick={() => navigate("/register1")}>
+            <a onClick={() => navigate("/signup-entry1")}>
               <img
                 className="image"
                 src="https://fizabinthrazak.github.io/old1/old1.jpg"
@@ -23,7 +23,7 @@ function Entry() {
             <h2>Orphan</h2>
           </div>
           <p>
-            <a onClick={() => navigate("/register1")}>
+            <a onClick={() => navigate("/signup-entry2")}>
               <img
                 className="image"
                 src="https://fizabinthrazak.github.io/child1/child1.jpg"
