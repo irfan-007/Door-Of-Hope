@@ -20,26 +20,25 @@ function InstitutionSignup() {
 
   const navigate = useNavigate();
 
+  let errorfree = true;
+
   const auth = getAuth();
 
   const sub = async (data) => {
     // e.preventDefault();
     console.log(data);
-    await CreateUser(data.email, data.password)
-      .then((data) => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            addData(data).then(console.log("added done!"));
+    await CreateUser(data.email, data.password).catch((error) => {
+      if (error) {
+        console.log(error.message);
+        errorfree = false;
+      }
+    });
 
-            const uid = user.uid;
-            // ...
-          } else {
-            // User is signed out
-            console.log("auth state error!!!");
-          }
-        });
-      })
-      .catch((error) => console.log(error.message));
+    if (errorfree == true) {
+      addData(data)
+        .then(console.log("added done!"))
+        .catch((error) => console.log(error.message));
+    }
   };
 
   const [passwod, setpasswod] = useState("");
