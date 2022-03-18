@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function InstitutionSignup() {
   const {
@@ -22,23 +21,24 @@ function InstitutionSignup() {
 
   let errorfree = true;
 
-  const auth = getAuth();
-
   const sub = async (data) => {
     // e.preventDefault();
     console.log(data);
     await CreateUser(data.email, data.password).catch((error) => {
       if (error) {
         console.log(error.message);
+        alert("user already existing");
         errorfree = false;
       }
     });
 
     if (errorfree == true) {
       addData(data)
-        .then(console.log("added done!"))
+        .then(navigate("/institution-login"))
         .catch((error) => console.log(error.message));
     }
+
+    reset();
   };
 
   const [passwod, setpasswod] = useState("");

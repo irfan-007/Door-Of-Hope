@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import React, { useState } from "react";
 
-function Login() {
+function Login({ logTo }) {
   const {
     register,
     handleSubmit,
@@ -21,18 +21,24 @@ function Login() {
     // e.preventDefault();
     console.log(data);
     await AuthUser(data.email, data.password)
-      .then(() => navigate("/editpage"))
+      .then(() => {
+        if (logTo == "institution") {
+          navigate("/editpage");
+        } else {
+          navigate("/finalwebpage");
+        }
+      })
       .catch(() => console.log("invaied credentials"));
     reset();
   };
   ///////////////////////////////////////////
-
+  console.log(logTo);
   return (
     <>
       <Container fluid style={{ marginTop: 71 }}>
         <div className="container">
           <br />
-          <h1>SignUp</h1>
+          <h1>Login</h1>
           <hr />
           <br />
 

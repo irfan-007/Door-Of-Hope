@@ -19,6 +19,7 @@
 .unlist li:hover {
   background-color: gray;
   color: white;
+  cursor: pointer;
 }
 
 .test2 i {

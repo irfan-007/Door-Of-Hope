@@ -36,6 +36,7 @@ function NavBar() {
                   CONTACT
                 </Nav.Link>
                 <Nav.Link onClick={() => navigate("/about")}>ABOUT-US</Nav.Link>
+                <Nav.Link onClick={() => navigate("/testing")}>test</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <span

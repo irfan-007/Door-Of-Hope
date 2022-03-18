@@ -3,7 +3,11 @@ import { Button, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./Register.css";
 
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+
 import { useState } from "react";
+import { db } from "../../Firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 function EntrySignup({ type }) {
   const {
@@ -14,10 +18,71 @@ function EntrySignup({ type }) {
     trigger,
   } = useForm();
 
-  const sub = (data) => {
+  const storage = getStorage();
+  const [Url, setUrl] = useState("");
+
+  const HandleUpload = async (folder, refname, file) => {
+    const storageRef = ref(storage, `${folder}/${refname}`);
+    await uploadBytes(storageRef, file).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+      getDownloadURL(snapshot.ref).then((downloadURL) => {
+        setUrl(downloadURL);
+
+        console.log("File available at", downloadURL);
+      });
+    });
+  };
+
+  const [ImgUpload, setImgUpload] = useState("");
+
+  const CollectionRef = collection(db, "Entry");
+
+  const addData = async (data) => {
+    await addDoc(CollectionRef, {
+      helper_name: data.name,
+      helper_email: data.email,
+      helper_phone: data.phone,
+      helper_place: data.place,
+      helper_address: data.address,
+
+      name: data.name1,
+      place: data.place1,
+      gender: data.gender,
+      age: data.age,
+      photo: Url,
+      type: type,
+    }).then(() => {
+      return true;
+    });
+  };
+
+  const sub = async (data) => {
     // e.preventDefault();
+    setImgUpload(data.photo[0]);
     console.log(data);
-    reset();
+    console.log(ImgUpload);
+
+    if (ImgUpload != "") {
+      await HandleUpload("Images", ImgUpload.name, ImgUpload)
+        .then(() => {
+          alert("image uploaded  :)");
+          console.log("url ::::::   ", Url);
+
+          if (Url != "") {
+            let ok = addData(data);
+            if (ok) {
+              alert("Succussfully registered");
+              setUrl("");
+              reset();
+            }
+          } else {
+            alert("try again !");
+          }
+        })
+        .catch((error) => console.log(error.message));
+    } else {
+      alert("image not uploaded !");
+    }
   };
 
   return (
@@ -232,7 +297,7 @@ function EntrySignup({ type }) {
                 <b>Gender </b> &emsp;&emsp;&emsp; male
                 <input
                   type="radio"
-                  value="m"
+                  value="male"
                   name="gender"
                   {...register("gender", {
                     required: "gender is required",
@@ -242,7 +307,7 @@ function EntrySignup({ type }) {
                 &emsp;&emsp; female
                 <input
                   type="radio"
-                  value="f"
+                  value="female"
                   name="gender"
                   {...register("gender", {
                     required: "gender is required",
@@ -252,7 +317,7 @@ function EntrySignup({ type }) {
                 &emsp;&emsp; other
                 <input
                   type="radio"
-                  value="i"
+                  value="other"
                   name="gender"
                   {...register("gender", {
                     required: "gender is required",

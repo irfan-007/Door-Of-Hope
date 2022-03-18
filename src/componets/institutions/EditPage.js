@@ -29,8 +29,8 @@ function EditPage() {
                   type="text"
                   style={{ marginTop: "2rem" }}
                 />{" "}
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </h1>
               <p>
                 <input
@@ -39,8 +39,8 @@ function EditPage() {
                   type="text"
                   style={{ marginLeft: "30rem" }}
                 />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </p>
             </div>
           </div>
@@ -61,8 +61,8 @@ function EditPage() {
                           placeholder="title"
                           type="text"
                         />
-                        <i class="fa-solid fa-square-pen"></i>
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i className="fa-solid fa-square-pen"></i>
+                        <i className="fa-solid fa-circle-check"></i>
                       </h4>
 
                       <h5>
@@ -74,8 +74,8 @@ function EditPage() {
                           cols="30"
                           rows="10"
                         ></textarea>
-                        <i class="fa-solid fa-square-pen"></i>
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i className="fa-solid fa-square-pen"></i>
+                        <i className="fa-solid fa-circle-check"></i>
                       </h5>
                     </div>
                   </div>
@@ -106,38 +106,38 @@ function EditPage() {
             <div style={{ float: "left" }}>
               <div>
                 Email : <input type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
               <div>
                 phone : <input type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
               <div>
                 location : <input type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
             </div>
             <div style={{ float: "right" }}>
               <div>
-                <i class="fa-brands fa-instagram-square"></i>{" "}
+                <i className="fa-brands fa-instagram-square"></i>{" "}
                 <input placeholder="instagram url" type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
               <div>
-                <i class="fa-brands fa-facebook"></i>{" "}
+                <i className="fa-brands fa-facebook"></i>{" "}
                 <input placeholder="facebook url" type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
               <div>
-                <i class="fa-brands fa-twitter-square"></i>{" "}
+                <i className="fa-brands fa-twitter-square"></i>{" "}
                 <input placeholder="twitter url" type="text" />
-                <i class="fa-solid fa-square-pen"></i>
-                <i class="fa-solid fa-circle-check"></i>
+                <i className="fa-solid fa-square-pen"></i>
+                <i className="fa-solid fa-circle-check"></i>
               </div>
             </div>
           </div>

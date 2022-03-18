@@ -13,7 +13,7 @@ function Loginfor() {
             <h2 style={{ fontFamily: "Audiowide" }}>Institution Login</h2>
           </div>
           <p>
-            <a onClick={() => navigate("/adminlogin")}>
+            <a onClick={() => navigate("/institution-login")}>
               <img
                 className="image"
                 src="https://southeasternadmin.files.wordpress.com/2013/02/does-it-all.jpg"
@@ -24,7 +24,7 @@ function Loginfor() {
             <h2 style={{ fontFamily: "Audiowide" }}>Volunteer Login</h2>
           </div>
           <p>
-            <a onClick={() => navigate("/volunteerlogin")}>
+            <a onClick={() => navigate("/volunteer-login")}>
               <img
                 className="image"
                 src="https://cswgroup.co.uk/wp-content/uploads/2019/07/Volunteers_Raised_Hands_MHagerty.png"

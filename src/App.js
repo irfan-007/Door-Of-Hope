@@ -18,8 +18,11 @@ import InstEntry from "./componets/institutions/navpages/Entry";
 import InstEvent from "./componets/institutions/navpages/Events";
 import InstServices from "./componets/institutions/navpages/Services";
 import InstVolunteer from "./componets/institutions/navpages/Volunteer";
+import Test from "./componets/Test";
 
 function App() {
+  let navnothide = true;
+
   return (
     <div
       style={{
@@ -31,10 +34,12 @@ function App() {
         minHeight: "47rem",
       }}
     >
-      <NavBar />
+      {navnothide && <NavBar />}
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/testing" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/entry" element={<Entry />} />
         <Route path="/about" element={<About />} />
@@ -43,8 +48,11 @@ function App() {
         <Route path="/editpage" element={<EditPage />} />
 
         <Route path="/login" element={<Loginfor />} />
-        <Route path="/adminlogin" element={<Login labelNo="1/2" />} />
-        <Route path="/volunteerlogin" element={<Login labelNo="1/2" />} />
+        <Route
+          path="/institution-login"
+          element={<Login logTo="institution" />}
+        />
+        <Route path="/volunteer-login" element={<Login logTo="volunteer" />} />
 
         <Route path="/donate" element={<Donate />} />
         <Route path="/signup-institution" element={<InstitutionSignup />} />

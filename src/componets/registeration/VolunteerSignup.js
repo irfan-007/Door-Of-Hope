@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 
 import { useState } from "react";
+import { CreateUser, db } from "../../Firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function VolunteerSignup() {
   const {
@@ -14,10 +17,40 @@ function VolunteerSignup() {
     trigger,
   } = useForm();
 
-  const sub = (data) => {
+  let errorfree = true;
+  const navigate = useNavigate();
+
+  const sub = async (data) => {
     // e.preventDefault();
     console.log(data);
+    await CreateUser(data.email, data.password).catch((error) => {
+      if (error) {
+        console.log(error.message);
+        alert("user already existing");
+        errorfree = false;
+      }
+    });
+
+    if (errorfree == true) {
+      addData(data)
+        .then(navigate("/volunteer-login"))
+        .catch((error) => console.log(error.message));
+    }
+
     reset();
+  };
+
+  const CollectionRef = collection(db, "Volunteers");
+
+  const addData = async (data) => {
+    await addDoc(CollectionRef, {
+      name: data.name,
+      password: data.password,
+      email: data.email,
+      phone: data.phone,
+      place: data.place,
+      address: data.address,
+    });
   };
 
   const [passwod, setpasswod] = useState("");

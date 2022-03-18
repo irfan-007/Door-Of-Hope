@@ -3,22 +3,9 @@ import React, { useEffect, useState } from "react";
 import "./Footer.css";
 
 function Footer() {
-  const [coloring, setcoloring] = useState(true);
-
-  useEffect(() => {
-    window.setTimeout(() => {
-      console.log(coloring);
-      setcoloring(!coloring);
-    }, 3000);
-  });
-
   return (
     <div
-      style={
-        coloring
-          ? { backgroundColor: "rgba(12, 94, 80, 0.75)" }
-          : { backgroundColor: "yellowgreen" }
-      }
+      style={{ backgroundColor: "rgba(12, 94, 80, 0.75)" }}
       className="ftr container"
     >
       <Row>
