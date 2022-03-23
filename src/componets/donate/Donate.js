@@ -1,7 +1,8 @@
-import { Button, Container, Tab } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Donate() {
   const {
@@ -12,10 +13,13 @@ function Donate() {
     trigger,
   } = useForm();
 
+  const navigate = useNavigate();
+
   const sub = (data) => {
     // e.preventDefault();
     console.log(data);
     reset();
+    navigate("/donate-list");
   };
   ///////////////////////////////////////////
 

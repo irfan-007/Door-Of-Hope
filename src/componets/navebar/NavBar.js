@@ -36,22 +36,14 @@ function NavBar() {
                   CONTACT
                 </Nav.Link>
                 <Nav.Link onClick={() => navigate("/about")}>ABOUT-US</Nav.Link>
-                <Nav.Link onClick={() => navigate("/testing")}>test</Nav.Link>
               </Nav>
             </Navbar.Collapse>
-            <span
-              style={{
-                color: "white",
-                fontFamily: "sans-serif",
-                width: "auto",
-                textAlign: "center",
-                backgroundColor: "transparent",
-                padding: 8,
-                fontSize: "1.5rem",
-                borderRadius: "20px",
-              }}
-            >
-              DOOR OF HOPE
+            <span>
+              <img
+                style={{ width: "13rem", height: "3rem", borderRadius: "25px" }}
+                alt="logo"
+                src="https://firebasestorage.googleapis.com/v0/b/doorofhope-180e4.appspot.com/o/logo3.jpg?alt=media&token=a711c0b9-fc16-4975-8949-d2a98bc039b3"
+              />
             </span>
           </Container>
         </Navbar>

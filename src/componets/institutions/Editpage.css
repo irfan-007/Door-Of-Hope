@@ -1,27 +1,3 @@
-.unlist {
-  list-style-type: none;
-  font-size: 20px;
-  padding: 10px;
-  background-color: rgb(21, 16, 1, 0.6);
-  width: 10%;
-  text-align: center;
-  height: 42rem;
-  position: fixed;
-}
-
-.unlist li {
-  background-color: aliceblue;
-  margin-bottom: 8px;
-  border-radius: 25px;
-  border: 1px solid wheat;
-}
-
-.unlist li:hover {
-  background-color: gray;
-  color: white;
-  cursor: pointer;
-}
-
 .test2 i {
   margin-left: 7px;
 }
@@ -30,4 +6,25 @@
   background-image: url("https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.tak {
+  float: left;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 30px;
+  margin: 2rem;
+  font-family: sans-serif;
+}
+
+.tak:hover {
+  background-color: rgba(10, 8, 8, 0.747);
+  cursor: pointer;
+}
+
+.bx {
+  background-color: aliceblue;
+  margin-top: 11rem;
+  border-radius: 15px;
+  padding: 2rem;
 }

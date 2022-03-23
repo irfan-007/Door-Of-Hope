@@ -19,6 +19,7 @@ import InstEvent from "./componets/institutions/navpages/Events";
 import InstServices from "./componets/institutions/navpages/Services";
 import InstVolunteer from "./componets/institutions/navpages/Volunteer";
 import Test from "./componets/Test";
+import DonateList from "./componets/donate/DonateList";
 
 function App() {
   let navnothide = true;
@@ -55,6 +56,7 @@ function App() {
         <Route path="/volunteer-login" element={<Login logTo="volunteer" />} />
 
         <Route path="/donate" element={<Donate />} />
+        <Route path="/donate-list" element={<DonateList />} />
         <Route path="/signup-institution" element={<InstitutionSignup />} />
         <Route path="/signup-volunteer" element={<VolunteerSignup />} />
         <Route path="/signup-entry1" element={<EntrySignup type="Oldage" />} />
@@ -65,8 +67,10 @@ function App() {
 
         <Route path="/inst-entrys" element={<InstEntry />} />
         <Route path="/inst-events" element={<InstEvent />} />
+        <Route path="/inst-events2" element={<InstEvent swap={true} />} />
         <Route path="/inst-volunteers" element={<InstVolunteer />} />
         <Route path="/inst-services" element={<InstServices />} />
+        <Route path="/inst-services2" element={<InstServices swap={true} />} />
       </Routes>
     </div>
   );

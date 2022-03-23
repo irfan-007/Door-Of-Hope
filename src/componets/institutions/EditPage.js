@@ -1,149 +1,93 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Editpage.css";
+import React, { useState } from "react";
+import AddBank from "./editpageContent/AddBank";
+import AddEvent from "./editpageContent/AddEvent";
+import AddService from "./editpageContent/AddService";
+import DeleteEvent from "./editpageContent/DeleteEvent";
+import DeleteService from "./editpageContent/DeleteService";
+import Navbar from "./Navbar";
 
 function EditPage() {
-  const navigate = useNavigate();
+  const [prnt, setprnt] = useState(false);
+  const [prnt1, setprnt1] = useState(false);
+  const [prnt2, setprnt2] = useState(false);
+  const [prnt3, setprnt3] = useState(false);
+  const [prnt4, setprnt4] = useState(false);
+
+  const addService = () => {
+    setprnt(!prnt);
+    setprnt1(false);
+    setprnt2(false);
+    setprnt3(false);
+    setprnt4(false);
+  };
+  const addEvent = () => {
+    setprnt1(!prnt1);
+    setprnt(false);
+    setprnt2(false);
+    setprnt3(false);
+    setprnt4(false);
+  };
+
+  const editService = () => {
+    setprnt2(!prnt2);
+    setprnt1(false);
+    setprnt3(false);
+    setprnt(false);
+    setprnt4(false);
+  };
+  const editEvent = () => {
+    setprnt3(!prnt3);
+    setprnt1(false);
+    setprnt2(false);
+    setprnt(false);
+    setprnt4(false);
+  };
+
+  const addBank = () => {
+    setprnt4(!prnt4);
+    setprnt1(false);
+    setprnt2(false);
+    setprnt(false);
+    setprnt3(false);
+  };
 
   return (
-    <>
-      <ul className="unlist">
-        <li onClick={() => navigate("/editpage")}>home</li>
-        <li onClick={() => navigate("/inst-volunteers")}>volunteer</li>
-        <li onClick={() => navigate("/inst-services")}>service</li>
-        <li onClick={() => navigate("/inst-events")}>events</li>
-        <li onClick={() => navigate("/inst-entrys")}>entrys</li>
-      </ul>
+    <div>
+      <Navbar />
       <div
         className="test2"
         style={{
           marginLeft: "0rem",
+          paddingLeft: "11rem",
+          paddingRight: "5rem",
+          paddingTop: "10px",
         }}
       >
-        <div className="banner text-center" data-scroll-index="0">
-          <div className="banner-overlay">
-            <div className="container">
-              <h1 className="text-capitalize">
-                <input
-                  placeholder="institution name"
-                  type="text"
-                  style={{ marginTop: "2rem" }}
-                />{" "}
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </h1>
-              <p>
-                <input
-                  placeholder="description"
-                  title="description"
-                  type="text"
-                  style={{ marginLeft: "30rem" }}
-                />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </p>
-            </div>
-          </div>
+        <div>
+          <button className="tak btn btn-outline-info" onClick={addService}>
+            Add Service Request
+          </button>
 
-          <div className="about-us section-padding" data-scroll-index="1">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12 section-title text-center">
-                  <h3>ABOUT US</h3>
-                  <span className="section-title-line"></span>
-                </div>
-                <div className="sss">
-                  <div className="section-info">
-                    <div className="sub-title-paragraph">
-                      <h4>
-                        <input
-                          style={{ marginLeft: "1rem" }}
-                          placeholder="title"
-                          type="text"
-                        />
-                        <i className="fa-solid fa-square-pen"></i>
-                        <i className="fa-solid fa-circle-check"></i>
-                      </h4>
-
-                      <h5>
-                        <textarea
-                          style={{ marginLeft: "1rem" }}
-                          placeholder="describe"
-                          name=""
-                          id=""
-                          cols="30"
-                          rows="10"
-                        ></textarea>
-                        <i className="fa-solid fa-square-pen"></i>
-                        <i className="fa-solid fa-circle-check"></i>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-50">
-                  <div className="section-img">
-                    <img
-                      src="images/about.jpg"
-                      alt=""
-                      className="img-responsive"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              backgroundColor: "rgb(21, 16, 1)",
-              height: "15rem",
-              padding: "5rem",
-              color: "aliceblue",
-            }}
-          >
-            <div style={{ fontSize: "larger" }}>Contact-Us</div>
-            <hr style={{ backgroundColor: "aliceblue" }} />
-            <div style={{ float: "left" }}>
-              <div>
-                Email : <input type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                phone : <input type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                location : <input type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-            </div>
-            <div style={{ float: "right" }}>
-              <div>
-                <i className="fa-brands fa-instagram-square"></i>{" "}
-                <input placeholder="instagram url" type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                <i className="fa-brands fa-facebook"></i>{" "}
-                <input placeholder="facebook url" type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                <i className="fa-brands fa-twitter-square"></i>{" "}
-                <input placeholder="twitter url" type="text" />
-                <i className="fa-solid fa-square-pen"></i>
-                <i className="fa-solid fa-circle-check"></i>
-              </div>
-            </div>
-          </div>
+          <button className="tak btn btn-outline-success" onClick={addEvent}>
+            Add Events
+          </button>
+          <button className="tak btn btn-outline-danger" onClick={editEvent}>
+            Remove Events
+          </button>
+          <button className="tak btn btn-outline-warning" onClick={editService}>
+            Remove Service Request
+          </button>
+          <button className="tak btn btn-outline-primary" onClick={addBank}>
+            Add Bank
+          </button>
         </div>
+        <div>{prnt1 && <AddEvent />}</div>
+        <div>{prnt && <AddService />}</div>
+        <div>{prnt3 && <DeleteEvent />}</div>
+        <div>{prnt2 && <DeleteService />}</div>
+        <div>{prnt4 && <AddBank />}</div>
       </div>
-    </>
+    </div>
   );
 }
 

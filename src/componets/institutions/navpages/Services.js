@@ -1,139 +1,54 @@
 import React from "react";
 import "./Services.css";
+import Navbar from "../Navbar";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../Firebase";
+import { useEffect, useState } from "react";
+import Navbar2 from "../Navbar2";
 
-function Services() {
+function Services({ swap }) {
+  const [Data, setData] = useState([]);
+
+  useEffect(() => {
+    const usersCollectionRef = collection(db, "Services");
+
+    const getServices = async () => {
+      const snap = await getDocs(usersCollectionRef);
+      setData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getServices();
+  }, []);
+
   return (
-    <div className="test2 grid-container">
+    <div>
+      {swap ? <Navbar2 /> : <Navbar />}
       <div
-        className="card grid-item"
+        className="test2"
         style={{
-          width: "18rem",
-          backgroundColor: "rgba(0,0,0,.5)",
+          marginLeft: "0rem",
+          paddingLeft: "10rem",
         }}
       >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
+        <h1>Services</h1>
+        <div class="main001">
+          {Data.map((item, key) => {
+            return (
+              <div key={key} className="card001">
+                <span>
+                  ID:<i style={{ color: "green" }}>{item.id}</i>
+                </span>
 
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="card grid-item"
-        style={{ width: "18rem", backgroundColor: "rgba(0,0,0,.5)" }}
-      >
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+                <div className="image001">
+                  <img src={`${item.photo}`} alt="loading..." />
+                </div>
+                <div className="title">
+                  <h5>{item.title}</h5>
+                </div>
+                <div className="des">{item.description}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

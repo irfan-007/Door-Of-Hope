@@ -1,13 +1,6 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-}
-.grid-item {
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 0px;
-  font-size: 30px;
-  text-align: center;
+.test2 {
+  background-image: url("https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 47rem;
 }
