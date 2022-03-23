@@ -20,9 +20,13 @@ import InstServices from "./componets/institutions/navpages/Services";
 import InstVolunteer from "./componets/institutions/navpages/Volunteer";
 import Test from "./componets/Test";
 import DonateList from "./componets/donate/DonateList";
+import { LogedinInstContext } from "./Contexts";
+import { useState } from "react";
 
 function App() {
   let navnothide = true;
+  const [Email_pass_inst, setEmail_pass_inst] = useState([]);
+  console.log(Email_pass_inst);
 
   return (
     <div
@@ -37,41 +41,56 @@ function App() {
     >
       {navnothide && <NavBar />}
 
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/testing" element={<Test />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/entry" element={<Entry />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/institutions" element={<Institutions />} />
-        <Route path="/finalwebpage" element={<FinalWebPage />} />
-        <Route path="/editpage" element={<EditPage />} />
+      <LogedinInstContext.Provider
+        value={{ Email_pass_inst, setEmail_pass_inst }}
+      >
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/testing" element={<Test />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/entry" element={<Entry />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/institutions" element={<Institutions />} />
+          <Route path="/finalwebpage" element={<FinalWebPage />} />
+          <Route path="/editpage" element={<EditPage />} />
 
-        <Route path="/login" element={<Loginfor />} />
-        <Route
-          path="/institution-login"
-          element={<Login logTo="institution" />}
-        />
-        <Route path="/volunteer-login" element={<Login logTo="volunteer" />} />
+          <Route path="/login" element={<Loginfor />} />
 
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/donate-list" element={<DonateList />} />
-        <Route path="/signup-institution" element={<InstitutionSignup />} />
-        <Route path="/signup-volunteer" element={<VolunteerSignup />} />
-        <Route path="/signup-entry1" element={<EntrySignup type="Oldage" />} />
-        <Route
-          path="/signup-entry2"
-          element={<EntrySignup type="Orphanage" />}
-        />
+          <Route
+            path="/institution-login"
+            element={<Login logTo="institution" />}
+          />
 
-        <Route path="/inst-entrys" element={<InstEntry />} />
-        <Route path="/inst-events" element={<InstEvent />} />
-        <Route path="/inst-events2" element={<InstEvent swap={true} />} />
-        <Route path="/inst-volunteers" element={<InstVolunteer />} />
-        <Route path="/inst-services" element={<InstServices />} />
-        <Route path="/inst-services2" element={<InstServices swap={true} />} />
-      </Routes>
+          <Route
+            path="/volunteer-login"
+            element={<Login logTo="volunteer" />}
+          />
+
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/donate-list" element={<DonateList />} />
+          <Route path="/signup-institution" element={<InstitutionSignup />} />
+          <Route path="/signup-volunteer" element={<VolunteerSignup />} />
+          <Route
+            path="/signup-entry1"
+            element={<EntrySignup type="Oldage" />}
+          />
+          <Route
+            path="/signup-entry2"
+            element={<EntrySignup type="Orphanage" />}
+          />
+
+          <Route path="/inst-entrys" element={<InstEntry />} />
+          <Route path="/inst-events" element={<InstEvent />} />
+          <Route path="/inst-events2" element={<InstEvent swap={true} />} />
+          <Route path="/inst-volunteers" element={<InstVolunteer />} />
+          <Route path="/inst-services" element={<InstServices />} />
+          <Route
+            path="/inst-services2"
+            element={<InstServices swap={true} />}
+          />
+        </Routes>
+      </LogedinInstContext.Provider>
     </div>
   );
 }

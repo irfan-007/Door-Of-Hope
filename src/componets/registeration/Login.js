@@ -1,12 +1,16 @@
-import { Button, Container, Tab } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./Register.css";
 import { AuthUser } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { LogedinInstContext } from "../../Contexts";
 
 function Login({ logTo }) {
+  const { Email_pass_inst, setEmail_pass_inst } =
+    useContext(LogedinInstContext);
+
   const {
     register,
     handleSubmit,
@@ -19,10 +23,15 @@ function Login({ logTo }) {
 
   const sub = async (data) => {
     // e.preventDefault();
-    console.log(data);
+    console.log("%%%%%", data);
     await AuthUser(data.email, data.password)
       .then(() => {
         if (logTo == "institution") {
+          setEmail_pass_inst({
+            email: data.email,
+            password: data.password,
+            user: true,
+          });
           navigate("/editpage");
         } else {
           navigate("/finalwebpage");

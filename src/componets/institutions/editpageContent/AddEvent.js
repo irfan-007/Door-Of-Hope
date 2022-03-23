@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { db } from "../../../Firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useForm } from "react-hook-form";
+import { LogedinInstContext } from "../../../Contexts";
 
 function AddEvent() {
+  const { Email_pass_inst, setEmail_pass_inst } =
+    useContext(LogedinInstContext);
+
   const {
     register,
     handleSubmit,
@@ -35,6 +39,8 @@ function AddEvent() {
       photo: Url,
       title: data.title,
       description: data.description,
+      email: Email_pass_inst.email,
+      pass: Email_pass_inst.password,
     }).then(() => {
       return true;
     });
