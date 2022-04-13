@@ -1,36 +1,32 @@
 import React, { useContext } from "react";
+import "./Services.css";
 import Navbar from "../Navbar";
-import "./Events.css";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../Firebase";
 import { useEffect, useState } from "react";
 import Navbar2 from "../Navbar2";
 import { LogedinInstContext } from "../../../Contexts";
 
-function Events() {
+function Services({ swap }) {
   const { Email_pass_inst, setEmail_pass_inst } =
     useContext(LogedinInstContext);
 
   const [Data, setData] = useState([]);
 
   useEffect(() => {
-    const usersCollectionRef = collection(db, "Events");
-    const q = query(
-      usersCollectionRef,
-      where("email", "==", Email_pass_inst.email)
-    );
+    const usersCollectionRef = collection(db, "Services");
 
-    const getEntrys = async () => {
-      const snap = await getDocs(q);
+    const getServices = async () => {
+      const snap = await getDocs(usersCollectionRef);
       setData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
-    getEntrys();
+    getServices();
   }, []);
 
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <div
         className="test2"
         style={{
@@ -38,15 +34,11 @@ function Events() {
           paddingLeft: "10rem",
         }}
       >
-        <h1>Events</h1>
-        <div className="main001">
+        <h1>Services</h1>
+        <div class="main001">
           {Data.map((item, key) => {
             return (
               <div key={key} className="card001">
-                <span>
-                  ID:<i style={{ color: "green" }}>{item.id}</i>
-                </span>
-
                 <div className="image001">
                   <img src={`${item.photo}`} alt="loading..." />
                 </div>
@@ -63,4 +55,4 @@ function Events() {
   );
 }
 
-export default Events;
+export default Services;

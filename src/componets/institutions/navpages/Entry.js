@@ -25,8 +25,8 @@ function Entry() {
         className="test2"
         style={{
           marginLeft: "0rem",
-          paddingLeft: "11rem",
-          paddingRight: "2rem",
+          paddingLeft: "9.5rem",
+          paddingRight: "1rem",
         }}
       >
         <h1>Entry</h1>
@@ -63,8 +63,8 @@ function Entry() {
                   <td>
                     <img
                       src={`${entry.photo}`}
-                      width="130px"
-                      height="150px"
+                      width="125px"
+                      height="145px"
                       alt="loading..."
                     />
                   </td>

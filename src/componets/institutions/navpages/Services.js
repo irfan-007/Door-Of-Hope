@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Services.css";
 import Navbar from "../Navbar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../Firebase";
 import { useEffect, useState } from "react";
 import Navbar2 from "../Navbar2";
+import { LogedinInstContext } from "../../../Contexts";
 
-function Services({ swap }) {
+function Services() {
+  const { Email_pass_inst, setEmail_pass_inst } =
+    useContext(LogedinInstContext);
+
   const [Data, setData] = useState([]);
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "Services");
+    const q = query(
+      usersCollectionRef,
+      where("email", "==", Email_pass_inst.email)
+    );
 
     const getServices = async () => {
-      const snap = await getDocs(usersCollectionRef);
+      const snap = await getDocs(q);
       setData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
@@ -22,7 +30,7 @@ function Services({ swap }) {
 
   return (
     <div>
-      {swap ? <Navbar2 /> : <Navbar />}
+      <Navbar />
       <div
         className="test2"
         style={{

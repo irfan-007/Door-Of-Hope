@@ -5,7 +5,7 @@ import Forum from "./Forum";
 
 function DonateList() {
   const [Data, setData] = useState([]);
-  const [link, setlink] = useState();
+  const [link, setlink] = useState("");
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "Institution");
@@ -18,25 +18,37 @@ function DonateList() {
     getServices();
   }, []);
 
-  const goto = (id) => {
-    setlink(id);
-    console.log(id);
+  const goto = (emailLNK) => {
+    setlink(emailLNK);
+    console.log(emailLNK);
   };
 
   return (
-    <div>
-      <div style={{ padding: "3rem" }}>
+    <div className="row">
+      <div
+        className="col-7"
+        style={{
+          paddingTop: "3rem",
+          paddingRight: "3rem",
+          backgroundColor: "transparent",
+        }}
+      >
         <ol>
           {Data.map((item) => {
             return (
               <li
                 key={item.id}
-                onClick={() => goto(item.id)}
+                onClick={() => goto(item.email)}
                 style={{
                   marginTop: "20px",
-                  color: "wheat",
+                  color: "green",
                   backgroundColor: "rgba(0,0,0,.7)",
-                  width: "60%",
+                  width: "100%",
+                  height: "2rem",
+                  cursor: "pointer",
+                  borderRadius: "25px",
+                  boxShadow: "-2px 3px white",
+                  paddingTop: "2px",
                 }}
               >
                 {item.name} , {item.place}
@@ -45,7 +57,12 @@ function DonateList() {
           })}
         </ol>
       </div>
-      <Forum id={link} />
+      <div
+        className="col-5"
+        style={{ padding: "2rem", backgroundColor: "transparent" }}
+      >
+        <Forum LNK={link} />
+      </div>
     </div>
   );
 }

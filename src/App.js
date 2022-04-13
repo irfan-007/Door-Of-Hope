@@ -16,7 +16,9 @@ import EntrySignup from "./componets/registeration/EntrySignup";
 import EditPage from "./componets/institutions/EditPage";
 import InstEntry from "./componets/institutions/navpages/Entry";
 import InstEvent from "./componets/institutions/navpages/Events";
+import InstEvent2 from "./componets/institutions/navpages2/Events";
 import InstServices from "./componets/institutions/navpages/Services";
+import InstServices2 from "./componets/institutions/navpages2/Services";
 import InstVolunteer from "./componets/institutions/navpages/Volunteer";
 import Test from "./componets/Test";
 import DonateList from "./componets/donate/DonateList";
@@ -54,19 +56,15 @@ function App() {
           <Route path="/institutions" element={<Institutions />} />
           <Route path="/finalwebpage" element={<FinalWebPage />} />
           <Route path="/editpage" element={<EditPage />} />
-
           <Route path="/login" element={<Loginfor />} />
-
           <Route
             path="/institution-login"
             element={<Login logTo="institution" />}
           />
-
           <Route
             path="/volunteer-login"
             element={<Login logTo="volunteer" />}
           />
-
           <Route path="/donate" element={<Donate />} />
           <Route path="/donate-list" element={<DonateList />} />
           <Route path="/signup-institution" element={<InstitutionSignup />} />
@@ -79,16 +77,12 @@ function App() {
             path="/signup-entry2"
             element={<EntrySignup type="Orphanage" />}
           />
-
           <Route path="/inst-entrys" element={<InstEntry />} />
           <Route path="/inst-events" element={<InstEvent />} />
-          <Route path="/inst-events2" element={<InstEvent swap={true} />} />
+          <Route path="/inst-events2" element={<InstEvent2 />} />
           <Route path="/inst-volunteers" element={<InstVolunteer />} />
           <Route path="/inst-services" element={<InstServices />} />
-          <Route
-            path="/inst-services2"
-            element={<InstServices swap={true} />}
-          />
+          <Route path="/inst-services2" element={<InstServices2 />} />
         </Routes>
       </LogedinInstContext.Provider>
     </div>

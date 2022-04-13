@@ -15,13 +15,9 @@ function Events() {
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "Events");
-    const q = query(
-      usersCollectionRef,
-      where("email", "==", Email_pass_inst.email)
-    );
 
     const getEntrys = async () => {
-      const snap = await getDocs(q);
+      const snap = await getDocs(usersCollectionRef);
       setData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
@@ -30,7 +26,7 @@ function Events() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <div
         className="test2"
         style={{
@@ -43,10 +39,6 @@ function Events() {
           {Data.map((item, key) => {
             return (
               <div key={key} className="card001">
-                <span>
-                  ID:<i style={{ color: "green" }}>{item.id}</i>
-                </span>
-
                 <div className="image001">
                   <img src={`${item.photo}`} alt="loading..." />
                 </div>
